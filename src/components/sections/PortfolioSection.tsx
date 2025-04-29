@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+// import { ArrowRight } from "lucide-react";
 
 export default function PortfolioSection() {
     const ref = useRef(null);
@@ -56,7 +56,7 @@ export default function PortfolioSection() {
                     <motion.div variants={itemVariants}>
                         <h2 className="text-5xl font-bold mb-6">Our Work</h2>
                         <p className="text-xl text-white-300 mb-8">
-                            Discover how we've helped businesses like yours achieve their digital goals.
+                            {"Discover how we've helped businesses like yours achieve their digital goals."}
                         </p>
                     </motion.div>
 

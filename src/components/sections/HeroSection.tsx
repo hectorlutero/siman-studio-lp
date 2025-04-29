@@ -1,6 +1,6 @@
 'use client'
 import { ArrowRight, Code, Globe, Zap } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import HeroIllustration from "../../../public/images/hero-illustration.svg";
 import { motion } from "framer-motion";
 

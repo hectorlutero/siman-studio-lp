@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code, Cpu, Zap, Wrench } from "lucide-react";
-import BackgroundEffect from "../ui/BackgroundEffect";
+// import BackgroundEffect from "../ui/BackgroundEffect";
 
 // Service card data structure
 const services = [
@@ -75,23 +75,7 @@ export default function ServicesSection() {
 
     return (
         <section className="relative py-32 overflow-hidden" ref={ref}>
-            <BackgroundEffect
-                gradientColors={{
-                    from: "turquoise-500",
-                    to: "munsell-500"
-                }}
-                opacity={0.2}
-                blur={3}
-                size={{
-                    width: "800px",
-                    height: "800px"
-                }}
-                animation={{
-                    duration: 1,
-                    delay: 0,
-                    repeat: Infinity
-                }}
-            />
+
 
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div

@@ -1,6 +1,6 @@
 'use client'
 import { CheckCircle, Code, Cpu, Rocket, Target, Zap } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -233,7 +233,7 @@ export default function AboutSection() {
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
-                            Let's Discuss Your Project
+                            {"Let's Discuss Your Project"}
                             <span className="w-2 h-2 rounded-full bg-turquoise-500 group-hover:bg-munsell-500 transition-colors"></span>
                         </motion.button>
                     </motion.div>
