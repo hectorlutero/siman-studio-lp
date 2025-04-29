@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+    --color-oxford-100: #00040c;
+    --color-oxford-200: #010818;
+    --color-oxford-300: #010c24;
+    --color-oxford-400: #01102f;
+    --color-oxford-500: #02153d;
+    --color-oxford-600: #053192;
+    --color-oxford-700: #074fe9;
+    --color-oxford-800: #5186fa;
+    --color-oxford-900: #a8c3fc;
+
+    --color-tekhelet-100: #0f0719;
+    --color-tekhelet-200: #1e0e31;
+    --color-tekhelet-300: #2e154a;
+    --color-tekhelet-400: #3d1c63;
+    --color-tekhelet-500: #4b227a;
+    --color-tekhelet-600: #6e32b2;
+    --color-tekhelet-700: #915ad1;
+    --color-tekhelet-800: #b691e0;
+    --color-tekhelet-900: #dac8f0;
+
+    --color-munsell-100: #001f24;
+    --color-munsell-200: #003e47;
+    --color-munsell-300: #015c6b;
+    --color-munsell-400: #017b8e;
+    --color-munsell-500: #0197af;
+    --color-munsell-600: #01d3f4;
+    --color-munsell-700: #39e4fe;
+    --color-munsell-800: #7bedfe;
+    --color-munsell-900: #bdf6ff;
+
+    --color-turquoise-100: #00302a;
+    --color-turquoise-200: #006053;
+    --color-turquoise-300: #00907d;
+    --color-turquoise-400: #00c0a6;
+    --color-turquoise-500: #00eed0;
+    --color-turquoise-600: #27ffe2;
+    --color-turquoise-700: #5dffe9;
+    --color-turquoise-800: #93fff1;
+    --color-turquoise-900: #c9fff8;
+
+    --color-white-100: #333333;
+    --color-white-200: #666666;
+    --color-white-300: #999999;
+    --color-white-400: #cccccc;
+    --color-white-500: #ffffff;
+    --color-white-600: #ffffff;
+    --color-white-700: #ffffff;
+    --color-white-800: #ffffff;
+    --color-white-900: #ffffff;
+
+    --color-mint-500: oklch(0.72 0.11 178);
+
+    /* Futuristic Theme Variables */
+    --gradient-tech: linear-gradient(135deg, var(--color-oxford-500) 0%, var(--color-tekhelet-500) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-turquoise-500) 0%, var(--color-munsell-500) 100%);
+    --glow-effect: 0 0 20px rgba(0, 238, 208, 0.3);
+    --card-shadow: 0 8px 32px rgba(2, 21, 61, 0.1);
+    --text-glow: 0 0 15px rgba(0, 238, 208, 0.5);
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-geist-sans);
+}
+
+/* Futuristic Components */
+.tech-card {
+    background: rgba(2, 21, 61, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 238, 208, 0.1);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glow-effect);
+    border-color: var(--color-turquoise-500);
+}
+
+.tech-button {
+    background: var(--gradient-accent);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-oxford-100);
+    font-weight: 600;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+}
+
+.tech-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-effect);
+}
+
+.tech-heading {
+    background: var(--gradient-tech);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: white;
+    text-shadow: var(--text-glow);
+}
+
+/* Navigation */
+.nav-link {
+    color: var(--color-white-500);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-turquoise-500);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-turquoise-500);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-gradient {
+    background: var(--gradient-tech);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, var(--color-oxford-100) 100%);
+    opacity: 0.8;
+}
+
+/* Code Blocks */
+.code-block {
+    background: var(--color-oxford-200);
+    border: 1px solid var(--color-tekhelet-300);
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-family: var(--font-geist-mono);
+}
+
+/* Animations */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tech-card {
+        border-radius: 12px;
+    }
+
+    .tech-button {
+        padding: 10px 20px;
+    }
+}
