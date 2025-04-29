@@ -164,7 +164,7 @@ export default function HeroSection() {
 
 
                             />
-                            <HeroIllustration />
+                            <HeroIllustration className="w-full h-full object-cover" />
                         </motion.div>
                     </motion.div>
                 </div>
