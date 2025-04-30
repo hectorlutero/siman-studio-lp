@@ -11,7 +11,9 @@ export default function ContactFormSection() {
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-4xl mx-auto text-center mb-16">
-                    <h2 className="text-4xl font-bold mb-4">{"Let's Build Something Amazing"}</h2>
+                    <h2 className="text-5xl md:text-7xl font-bold mb-4">
+                        <span className="block text-white tech-heading">Let's Build Something Amazing</span>
+                    </h2>
                     <p className="text-xl text-white-300">
                         {"Ready to transform your digital presence? Let's discuss how we can help your business grow."}
                     </p>
@@ -52,7 +54,7 @@ export default function ContactFormSection() {
                                 <label htmlFor="projectType" className="block text-white-300 mb-2">Project Type</label>
                                 <select
                                     id="projectType"
-                                    className="w-full px-4 py-3 rounded-lg bg-oxford-400/50 border border-oxford-500 text-white-300 focus:border-turquoise-500 focus:ring-1 focus:ring-turquoise-500 outline-none transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg bg-oxford-400/50 border border-oxford-500 text-white focus:border-turquoise-500 focus:ring-1 focus:ring-turquoise-500 outline-none transition-colors"
                                 >
                                     <option value="">Select project type</option>
                                     <option value="website">Website Development</option>

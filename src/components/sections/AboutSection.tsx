@@ -1,6 +1,6 @@
 'use client'
-import { CheckCircle, Code, Cpu, Rocket, Target, Zap } from "lucide-react";
-// import Image from "next/image";
+import { CheckCircle, Cpu, Rocket, Target, Zap } from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -56,7 +56,9 @@ export default function AboutSection() {
                 >
                     <motion.div className="space-y-10" variants={itemVariants}>
                         <div className="space-y-6">
-                            <h2 className="text-5xl font-bold">Our Story</h2>
+                            <motion.h2 className="text-5xl md:text-7xl font-bold mb-4" variants={itemVariants}>
+                                <span className="block text-white tech-heading">About Us</span>
+                            </motion.h2>
                             <p className="text-xl text-white-300 leading-relaxed">
                                 Founded by Hector Siman, a seasoned full-stack developer and Project Manager with over 6 years of experience, Siman Studio brings together expertise from diverse industries to deliver custom, fast, and trustworthy web solutions.
                             </p>
@@ -116,19 +118,27 @@ export default function AboutSection() {
                             >
                                 <div className="grid grid-cols-2 gap-6">
                                     {[
-                                        { icon: Code, color: "turquoise", text: "Full Stack Development" },
-                                        { icon: Cpu, color: "munsell", text: "Project Management" },
-                                        { icon: Zap, color: "turquoise", text: "Fast Delivery" },
-                                        { icon: CheckCircle, color: "munsell", text: "Best Practices" }
+                                        { icon: "/icons/laravel.svg", color: "turquoise", text: "Laravel (PHP)" },
+                                        { icon: "/icons/aspnet.svg", color: "munsell", text: "ASP.NET (C#)" },
+                                        { icon: "/icons/nodejs.svg", color: "turquoise", text: "Node.js & Next.js" },
+                                        { icon: "/icons/8n8.svg", color: "munsell", text: "8n8 Automations" }
                                     ].map((item, index) => (
                                         <motion.div
                                             key={index}
-                                            className={`p-6 bg-oxford-400/50 rounded-lg hover:bg-oxford-400/60 transition-colors`}
+                                            className="flex items-center gap-4 p-4 bg-oxford-400/50 rounded-lg hover:bg-oxford-400/60 transition-colors"
                                             whileHover={{ scale: 1.05 }}
                                             transition={{ type: "spring", stiffness: 300 }}
                                         >
-                                            <item.icon className={`w-8 h-8 text-${item.color}-500 mb-4`} />
-                                            <p className="text-lg text-white-300">{item.text}</p>
+                                            <div className={`p-3 bg-${item.color}-500/10 rounded-lg`}>
+                                                <Image
+                                                    src={item.icon}
+                                                    alt={item.text}
+                                                    width={24}
+                                                    height={24}
+                                                    className="w-6 h-6"
+                                                />
+                                            </div>
+                                            <span className="text-lg text-white-300">{item.text}</span>
                                         </motion.div>
                                     ))}
                                 </div>
@@ -166,10 +176,11 @@ export default function AboutSection() {
                             >
                                 <div className="space-y-6">
                                     {[
-                                        { icon: Code, color: "turquoise", text: "Laravel (PHP)" },
-                                        { icon: Code, color: "munsell", text: "ASP.NET (C#)" },
-                                        { icon: Code, color: "turquoise", text: "Node.js & Next.js" },
-                                        { icon: Code, color: "munsell", text: "8n8 Automations" }
+                                        { icon: "/icons/laravel.svg", color: "turquoise", text: "Laravel (PHP)" },
+                                        { icon: "/icons/aspnet.svg", color: "munsell", text: "ASP.NET (C#)" },
+                                        { icon: "/icons/nodejs.svg", color: "turquoise", text: "Node.js" },
+                                        { icon: "/icons/nextjs.svg", color: "turquoise", text: "Next.js" },
+                                        { icon: "/icons/8n8.svg", color: "munsell", text: "8n8 Automations" }
                                     ].map((item, index) => (
                                         <motion.div
                                             key={index}
@@ -178,7 +189,13 @@ export default function AboutSection() {
                                             transition={{ type: "spring", stiffness: 300 }}
                                         >
                                             <div className={`p-3 bg-${item.color}-500/10 rounded-lg`}>
-                                                <item.icon className={`w-6 h-6 text-${item.color}-500`} />
+                                                <Image
+                                                    src={item.icon}
+                                                    alt={item.text}
+                                                    width={24}
+                                                    height={24}
+                                                    className="w-6 h-6"
+                                                />
                                             </div>
                                             <span className="text-lg text-white-300">{item.text}</span>
                                         </motion.div>

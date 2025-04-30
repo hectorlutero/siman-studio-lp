@@ -3,6 +3,7 @@ import { ArrowRight, Code, Globe, Zap } from "lucide-react";
 // import Image from "next/image";
 import HeroIllustration from "../../../public/images/hero-illustration.svg";
 import { motion } from "framer-motion";
+import { FloatingDots } from "../visual/FloatingDots";
 
 export default function HeroSection() {
     const containerVariants = {
@@ -31,35 +32,7 @@ export default function HeroSection() {
     return (
         <section className="relative min-h-screen flex items-center">
             {/* Background Elements */}
-            {[...Array(15)].map((_, i) => {
-                const size = `${Math.floor(Math.random() * 10 + 8)}px`;
-                const position = {
-                    x: `${Math.floor(Math.random() * 120 - 10)}vw`,
-                    y: `${Math.floor(Math.random() * 120 - 10)}vh`,
-                }
-                return (
-                    <motion.div
-                        key={i}
-                        className="absolute bg-gradient-to-br from-turquoise-500/50 to-munsell-500/50 rounded-full"
-                        style={{
-                            width: size,
-                            height: size,
-                            left: position.x,
-                            top: position.y,
-                        }}
-                        animate={{
-                            y: [0, -20, 0],
-                            filter: ["blur(2px)", "blur(4px)"],
-                        }}
-                        transition={{
-                            duration: Math.random() * 2 + 3,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            delay: Math.random() * 2,
-                        }}
-                    />
-                );
-            })}
+            <FloatingDots count={5} minSize={10} maxSize={25} />
 
             <motion.div
                 className="absolute inset-0 z-0"
@@ -170,6 +143,7 @@ export default function HeroSection() {
                 </div>
             </div>
 
+            <FloatingDots />
 
         </section>
     );
