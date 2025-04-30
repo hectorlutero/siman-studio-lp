@@ -4,32 +4,45 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import ClientCarousel from "./ClientCarousel";
+import Image from "next/image";
 // import { ArrowRight } from "lucide-react";
 
-export default function PortfolioSection() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-    const featuredProjects = [
+const content = {
+    title: "Our Work",
+    description: "Discover how we've helped businesses like yours achieve their digital goals.",
+    featuredProjects: [
         {
             title: "E-commerce Platform",
             description: "A high-performance e-commerce solution with advanced analytics and AI-powered recommendations",
             category: "Web Development",
-            image: "/projects/ecommerce.png"
+            image: "/projects/ecommerce.png",
+            buttonText: "View Case Study →"
         },
         {
             title: "Enterprise Dashboard",
             description: "Real-time data visualization and business intelligence platform for enterprise clients",
             category: "Web Application",
-            image: "/projects/web-system.png"
+            image: "/projects/web-system.png",
+            buttonText: "View Case Study →"
         },
         {
             title: "Mobile Banking App",
             description: "Secure and user-friendly mobile banking application with biometric authentication",
             category: "Mobile App",
-            image: "/projects/banking-app.png"
+            image: "/projects/banking-app.png",
+            buttonText: "View Case Study →"
         }
-    ];
+    ],
+    ctaButton: {
+        text: "Schedule a Call to See More",
+        iconColor: "turquoise",
+        hoverColor: "munsell"
+    }
+};
+
+export default function PortfolioSection() {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.3 });
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -77,10 +90,10 @@ export default function PortfolioSection() {
                 >
                     <motion.div variants={itemVariants}>
                         <h2 className="text-5xl md:text-7xl font-bold mb-10">
-                            <span className="block text-white tech-heading">Our Work</span>
+                            <span className="block text-white tech-heading">{content.title}</span>
                         </h2>
                         <p className="text-xl text-white-300 mb-8">
-                            {"Discover how we've helped businesses like yours achieve their digital goals."}
+                            {content.description}
                         </p>
                     </motion.div>
                 </motion.div>
@@ -92,7 +105,7 @@ export default function PortfolioSection() {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                 >
-                    {featuredProjects.map((project, index) => (
+                    {content.featuredProjects.map((project, index) => (
                         <motion.div
                             key={index}
                             className="tech-card group"
@@ -101,10 +114,12 @@ export default function PortfolioSection() {
                             transition={{ type: "spring", stiffness: 300 }}
                         >
                             <div className="relative h-64 overflow-hidden rounded-t-lg">
-                                <img
+                                <Image
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-full object-cover overflow-hidden rounded-t-lg"
+                                    width={400}
+                                    height={256}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-oxford-200" />
                                 <div className="absolute bottom-0 left-0 p-6">
@@ -115,7 +130,7 @@ export default function PortfolioSection() {
                             <div className="p-6">
                                 <p className="text-white-300">{project.description}</p>
                                 <button className="mt-4 text-turquoise-500 hover:text-munsell-500 transition-colors">
-                                    View Case Study →
+                                    {project.buttonText}
                                 </button>
                             </div>
                         </motion.div>
@@ -138,8 +153,8 @@ export default function PortfolioSection() {
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 300 }}
                     >
-                        Schedule a Call to See More
-                        <span className="w-2 h-2 rounded-full bg-turquoise-500 group-hover:bg-munsell-500 transition-colors"></span>
+                        {content.ctaButton.text}
+                        <span className={`w-2 h-2 rounded-full bg-${content.ctaButton.iconColor}-500 group-hover:bg-${content.ctaButton.hoverColor}-500 transition-colors`}></span>
                     </motion.button>
                 </motion.div>
             </div>

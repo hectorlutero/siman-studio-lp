@@ -5,11 +5,10 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
-export default function ClientCarousel() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-    const clients = [
+const content = {
+    title: "Trusted by Industry Leaders",
+    description: "We've helped these companies transform their digital presence",
+    clients: [
         { name: "TechCorp", logo: "/clients/techcorp.svg" },
         { name: "InnovateX", logo: "/clients/innovatex.svg" },
         { name: "DigitalFlow", logo: "/clients/digitalflow.svg" },
@@ -20,7 +19,12 @@ export default function ClientCarousel() {
         { name: "CodeCraft", logo: "/clients/codecraft.svg" },
         { name: "PixelPerfect", logo: "/clients/pixelperfect.svg" },
         { name: "ByteBuilders", logo: "/clients/bytebuilders.svg" },
-    ];
+    ]
+};
+
+export default function ClientCarousel() {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.3 });
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -66,10 +70,10 @@ export default function ClientCarousel() {
                     animate={isInView ? "visible" : "hidden"}
                 >
                     <motion.h2 className="text-5xl md:text-7xl font-bold mb-10" variants={itemVariants}>
-                        <span className="block text-white tech-heading">Trusted by Industry Leaders</span>
+                        <span className="block text-white tech-heading">{content.title}</span>
                     </motion.h2>
                     <motion.p className="text-xl text-white-300" variants={itemVariants}>
-                        We've helped these companies transform their digital presence
+                        {content.description}
                     </motion.p>
                 </motion.div>
 
@@ -79,7 +83,7 @@ export default function ClientCarousel() {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                 >
-                    {clients.map((client, index) => (
+                    {content.clients.map((client, index) => (
                         <motion.div
                             key={index}
                             className="bg-oxford-300/50 backdrop-blur-sm p-6 rounded-lg flex items-center justify-center h-32"

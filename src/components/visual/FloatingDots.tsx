@@ -1,5 +1,5 @@
 'use client'
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface FloatingDotsProps {
@@ -9,8 +9,6 @@ interface FloatingDotsProps {
     minDuration?: number;
     maxDuration?: number;
     className?: string;
-    showConnections?: boolean;
-    connectionDistance?: number;
 }
 
 interface Point {
@@ -26,8 +24,6 @@ export const FloatingDots = ({
     minDuration = 3,
     maxDuration = 5,
     className = "",
-    showConnections = true,
-    connectionDistance = 40,
 }: FloatingDotsProps) => {
     const [points, setPoints] = useState<Point[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);

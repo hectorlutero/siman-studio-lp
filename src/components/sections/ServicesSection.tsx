@@ -6,45 +6,51 @@ import { useRef } from "react";
 import { Code, Cpu, Zap, Wrench } from "lucide-react";
 // import BackgroundEffect from "../ui/BackgroundEffect";
 
-// Service card data structure
-const services = [
-    {
-        id: 1,
-        title: "Custom Website Development",
-        description: "Transform your online presence with bespoke websites built on modern technologies and best practices.",
-        icon: Code,
-        iconColor: "turquoise",
-        buttonText: "Learn More",
-        buttonColor: "turquoise"
+const content = {
+    title: {
+        main: "Specialized",
+        highlight: "Web Solutions"
     },
-    {
-        id: 2,
-        title: "Custom Web Systems",
-        description: "Streamline your business operations with tailor-made web applications designed for your specific needs.",
-        icon: Cpu,
-        iconColor: "munsell",
-        buttonText: "Explore Solutions",
-        buttonColor: "munsell"
-    },
-    {
-        id: 3,
-        title: "Website Speed Optimization",
-        description: "Boost your website's performance and user experience with our expert optimization services.",
-        icon: Zap,
-        iconColor: "turquoise",
-        buttonText: "Optimize Now",
-        buttonColor: "turquoise"
-    },
-    {
-        id: 4,
-        title: "Wix Velo Framework & WordPress Specialists",
-        description: "Leverage our expertise in Velo Framework and WordPress to build powerful, scalable websites.",
-        icon: Wrench,
-        iconColor: "munsell",
-        buttonText: "Get Started",
-        buttonColor: "munsell"
-    }
-];
+    description: "We specialize in creating powerful, efficient, and scalable web solutions for small and medium businesses.",
+    services: [
+        {
+            id: 1,
+            title: "Custom Website Development",
+            description: "Transform your online presence with bespoke websites built on modern technologies and best practices.",
+            icon: Code,
+            iconColor: "turquoise",
+            buttonText: "Learn More",
+            buttonColor: "turquoise"
+        },
+        {
+            id: 2,
+            title: "Custom Web Systems",
+            description: "Streamline your business operations with tailor-made web applications designed for your specific needs.",
+            icon: Cpu,
+            iconColor: "munsell",
+            buttonText: "Explore Solutions",
+            buttonColor: "munsell"
+        },
+        {
+            id: 3,
+            title: "Website Speed Optimization",
+            description: "Boost your website's performance and user experience with our expert optimization services.",
+            icon: Zap,
+            iconColor: "turquoise",
+            buttonText: "Optimize Now",
+            buttonColor: "turquoise"
+        },
+        {
+            id: 4,
+            title: "Wix Velo Framework & WordPress Specialists",
+            description: "Leverage our expertise in Velo Framework and WordPress to build powerful, scalable websites.",
+            icon: Wrench,
+            iconColor: "munsell",
+            buttonText: "Get Started",
+            buttonColor: "munsell"
+        }
+    ]
+};
 
 export default function ServicesSection() {
     const ref = useRef(null);
@@ -88,14 +94,14 @@ export default function ServicesSection() {
                         variants={itemVariants}
                         className="text-5xl md:text-7xl font-bold mb-6"
                     >
-                        <span className="block text-white tech-heading">Specialized</span>
-                        <span className="text-turquoise-500">Web Solutions</span>
+                        <span className="block text-white tech-heading">{content.title.main}</span>
+                        <span className="text-turquoise-500">{content.title.highlight}</span>
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
                         className="text-xl md:text-2xl text-white-300 max-w-3xl mx-auto leading-relaxed"
                     >
-                        We specialize in creating powerful, efficient, and scalable web solutions for small and medium businesses.
+                        {content.description}
                     </motion.p>
                 </motion.div>
 
@@ -105,7 +111,7 @@ export default function ServicesSection() {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                 >
-                    {services.map((service) => {
+                    {content.services.map((service) => {
                         const Icon = service.icon;
                         return (
                             <motion.div

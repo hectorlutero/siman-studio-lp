@@ -1,9 +1,31 @@
 'use client'
-import { CheckCircle, Cpu, Rocket, Target, Zap } from "lucide-react";
+import { Rocket, Target } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+
+const content = {
+    title: "About Us",
+    description: "Founded by Hector Siman, a seasoned full-stack developer and Project Manager with over 6 years of experience, Siman Studio brings together expertise from diverse industries to deliver custom, fast, and trustworthy web solutions.",
+    subDescription: "We combine years of industry experience with modern development practices to create solutions that drive business growth and digital transformation.",
+    expertise: {
+        title: "Technical Expertise",
+        description: "We specialize in providing custom solutions when low-code and out-of-the-box tools fall short. Our expertise spans across various industries including retail, tech, communications, e-commerce, events, and more.",
+        subDescription: "With a focus on long-term stability and best practices, we ensure your project is built to last and scale with your business needs."
+    },
+    features: [
+        { icon: Rocket, color: "turquoise", title: "Fast Delivery", description: "Get your website up and running within 2 weeks" },
+        { icon: Target, color: "munsell", title: "Client Training", description: "Low dependency on dev services" }
+    ],
+    technologies: [
+        { icon: "/icons/laravel.svg", color: "turquoise", text: "Laravel (PHP)" },
+        { icon: "/icons/aspnet.svg", color: "munsell", text: "ASP.NET (C#)" },
+        { icon: "/icons/nodejs.svg", color: "turquoise", text: "Node.js & Next.js" },
+        { icon: "/icons/8n8.svg", color: "munsell", text: "8n8 Automations" }
+    ],
+    button: "Let's Discuss Your Project"
+};
 
 export default function AboutSection() {
     const ref = useRef(null);
@@ -57,13 +79,13 @@ export default function AboutSection() {
                     <motion.div className="space-y-10" variants={itemVariants}>
                         <div className="space-y-6">
                             <motion.h2 className="text-5xl md:text-7xl font-bold mb-4" variants={itemVariants}>
-                                <span className="block text-white tech-heading">About Us</span>
+                                <span className="block text-white tech-heading">{content.title}</span>
                             </motion.h2>
                             <p className="text-xl text-white-300 leading-relaxed">
-                                Founded by Hector Siman, a seasoned full-stack developer and Project Manager with over 6 years of experience, Siman Studio brings together expertise from diverse industries to deliver custom, fast, and trustworthy web solutions.
+                                {content.description}
                             </p>
                             <p className="text-white-300 leading-relaxed">
-                                We combine years of industry experience with modern development practices to create solutions that drive business growth and digital transformation.
+                                {content.subDescription}
                             </p>
                         </div>
 
@@ -71,28 +93,20 @@ export default function AboutSection() {
                             className="grid grid-cols-2 gap-6"
                             variants={itemVariants}
                         >
-                            <motion.div
-                                className="bg-oxford-300/50 backdrop-blur-sm p-6 rounded-lg hover:bg-oxford-300/60 transition-colors"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <div className="p-3 bg-turquoise-500/10 rounded-lg w-fit mb-4">
-                                    <Rocket className="w-6 h-6 text-turquoise-500" />
-                                </div>
-                                <h3 className="font-semibold text-lg mb-2">Fast Delivery</h3>
-                                <p className="text-white-300">Get your website up and running within 2 weeks</p>
-                            </motion.div>
-                            <motion.div
-                                className="bg-oxford-300/50 backdrop-blur-sm p-6 rounded-lg hover:bg-oxford-300/60 transition-colors"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <div className="p-3 bg-munsell-500/10 rounded-lg w-fit mb-4">
-                                    <Target className="w-6 h-6 text-munsell-500" />
-                                </div>
-                                <h3 className="font-semibold text-lg mb-2">Client Training</h3>
-                                <p className="text-white-300">Low dependency on dev services</p>
-                            </motion.div>
+                            {content.features.map((feature, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="bg-oxford-300/50 backdrop-blur-sm p-6 rounded-lg hover:bg-oxford-300/60 transition-colors"
+                                    whileHover={{ scale: 1.02 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                    <div className={`p-3 bg-${feature.color}-500/10 rounded-lg w-fit mb-4`}>
+                                        <feature.icon className={`w-6 h-6 text-${feature.color}-500`} />
+                                    </div>
+                                    <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                                    <p className="text-white-300">{feature.description}</p>
+                                </motion.div>
+                            ))}
                         </motion.div>
                     </motion.div>
 
@@ -117,12 +131,7 @@ export default function AboutSection() {
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
                                 <div className="grid grid-cols-2 gap-6">
-                                    {[
-                                        { icon: "/icons/laravel.svg", color: "turquoise", text: "Laravel (PHP)" },
-                                        { icon: "/icons/aspnet.svg", color: "munsell", text: "ASP.NET (C#)" },
-                                        { icon: "/icons/nodejs.svg", color: "turquoise", text: "Node.js & Next.js" },
-                                        { icon: "/icons/8n8.svg", color: "munsell", text: "8n8 Automations" }
-                                    ].map((item, index) => (
+                                    {content.technologies.map((item, index) => (
                                         <motion.div
                                             key={index}
                                             className="flex items-center gap-4 p-4 bg-oxford-400/50 rounded-lg hover:bg-oxford-400/60 transition-colors"
@@ -175,13 +184,7 @@ export default function AboutSection() {
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
                                 <div className="space-y-6">
-                                    {[
-                                        { icon: "/icons/laravel.svg", color: "turquoise", text: "Laravel (PHP)" },
-                                        { icon: "/icons/aspnet.svg", color: "munsell", text: "ASP.NET (C#)" },
-                                        { icon: "/icons/nodejs.svg", color: "turquoise", text: "Node.js" },
-                                        { icon: "/icons/nextjs.svg", color: "turquoise", text: "Next.js" },
-                                        { icon: "/icons/8n8.svg", color: "munsell", text: "8n8 Automations" }
-                                    ].map((item, index) => (
+                                    {content.technologies.map((item, index) => (
                                         <motion.div
                                             key={index}
                                             className="flex items-center gap-4 p-4 bg-oxford-400/50 rounded-lg hover:bg-oxford-400/60 transition-colors"
@@ -207,12 +210,12 @@ export default function AboutSection() {
 
                     <motion.div className="space-y-10 order-1 lg:order-2" variants={itemVariants}>
                         <div className="space-y-6">
-                            <h2 className="text-5xl font-bold">Technical Expertise</h2>
+                            <h2 className="text-5xl font-bold">{content.expertise.title}</h2>
                             <p className="text-xl text-white-300 leading-relaxed">
-                                We specialize in providing custom solutions when low-code and out-of-the-box tools fall short. Our expertise spans across various industries including retail, tech, communications, e-commerce, events, and more.
+                                {content.expertise.description}
                             </p>
                             <p className="text-white-300 leading-relaxed">
-                                With a focus on long-term stability and best practices, we ensure your project is built to last and scale with your business needs.
+                                {content.expertise.subDescription}
                             </p>
                         </div>
 
@@ -220,28 +223,20 @@ export default function AboutSection() {
                             className="grid grid-cols-2 gap-6"
                             variants={itemVariants}
                         >
-                            <motion.div
-                                className="bg-oxford-300/50 backdrop-blur-sm p-6 rounded-lg hover:bg-oxford-300/60 transition-colors"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <div className="p-3 bg-turquoise-500/10 rounded-lg w-fit mb-4">
-                                    <Rocket className="w-6 h-6 text-turquoise-500" />
-                                </div>
-                                <h3 className="font-semibold text-lg mb-2">Custom Solutions</h3>
-                                <p className="text-white-300">Tailored to your specific needs</p>
-                            </motion.div>
-                            <motion.div
-                                className="bg-oxford-300/50 backdrop-blur-sm p-6 rounded-lg hover:bg-oxford-300/60 transition-colors"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <div className="p-3 bg-munsell-500/10 rounded-lg w-fit mb-4">
-                                    <Target className="w-6 h-6 text-munsell-500" />
-                                </div>
-                                <h3 className="font-semibold text-lg mb-2">Industry Focus</h3>
-                                <p className="text-white-300">Multiple industry expertise</p>
-                            </motion.div>
+                            {content.features.map((feature, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="bg-oxford-300/50 backdrop-blur-sm p-6 rounded-lg hover:bg-oxford-300/60 transition-colors"
+                                    whileHover={{ scale: 1.02 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                    <div className={`p-3 bg-${feature.color}-500/10 rounded-lg w-fit mb-4`}>
+                                        <feature.icon className={`w-6 h-6 text-${feature.color}-500`} />
+                                    </div>
+                                    <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                                    <p className="text-white-300">{feature.description}</p>
+                                </motion.div>
+                            ))}
                         </motion.div>
 
                         <motion.button
@@ -250,7 +245,7 @@ export default function AboutSection() {
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
-                            {"Let's Discuss Your Project"}
+                            {content.button}
                             <span className="w-2 h-2 rounded-full bg-turquoise-500 group-hover:bg-munsell-500 transition-colors"></span>
                         </motion.button>
                     </motion.div>

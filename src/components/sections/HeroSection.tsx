@@ -5,6 +5,42 @@ import HeroIllustration from "../../../public/images/hero-illustration.svg";
 import { motion } from "framer-motion";
 import { FloatingDots } from "../visual/FloatingDots";
 
+const content = {
+    title: {
+        main: "Transform Your",
+        highlight: "Digital Presence"
+    },
+    description: "Magical web solutions crafted with cutting-edge technology to elevate your business to new heights.",
+    buttons: [
+        {
+            text: "Schedule Your Project",
+            icon: ArrowRight,
+            className: "tech-button group flex items-center gap-2",
+            iconClassName: "w-5 h-5 transition-transform group-hover:translate-x-1"
+        },
+        {
+            text: "View Our Work",
+            icon: Globe,
+            className: "px-6 py-3 border border-turquoise-500/20 rounded-lg text-turquoise-500 hover:bg-turquoise-500/10 transition-colors flex items-center gap-2",
+            iconClassName: "w-5 h-5"
+        }
+    ],
+    features: [
+        {
+            icon: Code,
+            iconColor: "turquoise",
+            title: "Custom Development",
+            description: "Tailored solutions"
+        },
+        {
+            icon: Zap,
+            iconColor: "munsell",
+            title: "Fast Performance",
+            description: "Optimized delivery"
+        }
+    ]
+};
+
 export default function HeroSection() {
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -56,60 +92,46 @@ export default function HeroSection() {
                     >
                         <motion.div className="space-y-4" variants={itemVariants}>
                             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                                <span className="tech-heading block">Transform Your</span>
-                                <span className="text-turquoise-500">Digital Presence</span>
+                                <span className="tech-heading block">{content.title.main}</span>
+                                <span className="text-turquoise-500">{content.title.highlight}</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-white-300 max-w-2xl">
-                                Magical web solutions crafted with cutting-edge technology to elevate your business to new heights.
+                                {content.description}
                             </p>
                         </motion.div>
 
                         {/* CTA Buttons */}
                         <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
-                            <motion.button
-                                className="tech-button group flex items-center gap-2"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                Schedule Your Project
-                                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                            </motion.button>
-                            <motion.button
-                                className="px-6 py-3 border border-turquoise-500/20 rounded-lg text-turquoise-500 hover:bg-turquoise-500/10 transition-colors flex items-center gap-2"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                View Our Work
-                                <Globe className="w-5 h-5" />
-                            </motion.button>
+                            {content.buttons.map((button, index) => (
+                                <motion.button
+                                    key={index}
+                                    className={button.className}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    {button.text}
+                                    <button.icon className={button.iconClassName} />
+                                </motion.button>
+                            ))}
                         </motion.div>
 
                         {/* Features Grid */}
                         <motion.div className="grid grid-cols-2 gap-4 mt-12" variants={itemVariants}>
-                            <motion.div
-                                className="tech-card p-4 flex items-center gap-3"
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <div className="p-2 bg-turquoise-500/10 rounded-lg">
-                                    <Code className="w-6 h-6 text-turquoise-500" />
-                                </div>
-                                <div>
-                                    <h3 className="font-semibold">Custom Development</h3>
-                                    <p className="text-sm text-white-300">Tailored solutions</p>
-                                </div>
-                            </motion.div>
-                            <motion.div
-                                className="tech-card p-4 flex items-center gap-3"
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <div className="p-2 bg-munsell-500/10 rounded-lg">
-                                    <Zap className="w-6 h-6 text-munsell-500" />
-                                </div>
-                                <div>
-                                    <h3 className="font-semibold">Fast Performance</h3>
-                                    <p className="text-sm text-white-300">Optimized delivery</p>
-                                </div>
-                            </motion.div>
+                            {content.features.map((feature, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="tech-card p-4 flex items-center gap-3"
+                                    whileHover={{ scale: 1.05 }}
+                                >
+                                    <div className={`p-2 bg-${feature.iconColor}-500/10 rounded-lg`}>
+                                        <feature.icon className={`w-6 h-6 text-${feature.iconColor}-500`} />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold">{feature.title}</h3>
+                                        <p className="text-sm text-white-300">{feature.description}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </motion.div>
                     </motion.div>
 
