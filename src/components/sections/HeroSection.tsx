@@ -159,7 +159,7 @@ export default function HeroSection() {
 
 
                             />
-                            <HeroIllustration className="w-full object-cover" />
+                            <HeroIllustration className="w-full object-cover" width={400} height={400} />
                         </motion.div>
                     </motion.div>
                 </div>
